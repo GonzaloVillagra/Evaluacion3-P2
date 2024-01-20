@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cerrarModal(destino)">Cancelar</ion-button>
+    </ion-buttons>
+    <ion-title>Valor ida y vuelta</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirmar()">Confirmar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-item>
+    <label id="monto">Valor del Viaje</label>
+    <ion-input label ="monto" type="number" placeholder="Ingrese el monto" [(ngModel)]="valor"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Moneda
+      <ion-select placeholder="Seleccione la moneda" [(ngModel)]="formatoMoneda">
+        <ion-select-option value="USD">Dólar estadounidense</ion-select-option>
+        <ion-select-option value="CLP">Peso chileno</ion-select-option>
+        <ion-select-option value="EUR">Euro</ion-select-option>
+      </ion-select>
+    </ion-label>
+  </ion-item>  
+  <ion-item *ngIf="formatoMoneda">
+    <ion-label>
+      Valor Seleccionado
+    </ion-label>
+    <ion-input type="text" [value]="100 | currency: formatoMoneda"></ion-input>
+  </ion-item>
+  <ion-buttons slot="end">
+    <ion-button (click)="confirmar()" [strong]="true">Confirmar</ion-button>
+  </ion-buttons>
+</ion-content>
+
+<!-- Seccion de codigo que muestra los destinos guardados
+<ion-list>
+  <ion-item *ngFor="let destino of lugares">
+    <ion-thumbnail slot="start">
+      <img [src]="destino.imagenDestino || destino.imagen" *ngIf="destino.imagenDestino || destino.imagen" />
+    </ion-thumbnail>
+
+    <label id="destinosTexto">
+      <h2>{{ destino.name }}</h2>
+       <p>{{ destino.country | uppercase }}</p>
+    </label>        
+    <ion-buttons slot="end" class="horizontal-icons">
+      <ion-button (click)="gestionDestino(destino)">
+        <ion-icon name="airplane-outline" ion-text></ion-icon>
+      </ion-button>
+      <ion-button (click)="capturarFoto()">
+        <ion-icon name="camera-outline" ion-text></ion-icon>
+      </ion-button>
+       <ion-button (click)="eliminarDestino(destino)">
+        <ion-icon name="trash-outline"></ion-icon>
+       </ion-button>
+     </ion-buttons>Este es un comentario en HTML 
+   </ion-item>
+ </ion-list> -->

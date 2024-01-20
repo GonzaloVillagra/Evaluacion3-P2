@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Buscador
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+<ion-searchbar [debounce]="1000" (ionInput)="manejoInput($event)">Buscador</ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let destino of lugares">
+      <ion-thumbnail slot="start">
+        <img [src]="destino.imagenDestino || destino.imagen" *ngIf="destino.imagenDestino || destino.imagen" />
+      </ion-thumbnail>
+
+      <label id="destinosTexto">
+        <h2>{{ destino.name }}</h2>
+         <p>{{ destino.country | uppercase }}</p>
+      </label>        
+      <ion-buttons slot="end" class="horizontal-icons">
+        <ion-button (click)="agregarDestino(destino)">
+          <ion-icon name="add-circle-outline" ion-text></ion-icon>
+        </ion-button>   
+       </ion-buttons>
+     </ion-item>
+   </ion-list>
+</ion-content>

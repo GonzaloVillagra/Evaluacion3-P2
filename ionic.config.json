@@ -1,0 +1,7 @@
+{
+  "name": "evaluacion3ph",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
